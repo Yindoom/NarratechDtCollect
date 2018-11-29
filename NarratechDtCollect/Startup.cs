@@ -4,12 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using DtCollect.Core.Domain;
 using DtCollect.Core.Entity;
-using DtCollect.Core.Helpers;
 using DtCollect.Core.Service;
 using DtCollect.Core.Service.Impl;
 using DtCollect.Infrastructure.Data;
 using DtCollect.Infrastructure.Data.Repos;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -19,7 +17,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Microsoft.IdentityModel.Tokens;
 
 namespace NarratechDtCollect
 {
@@ -43,7 +40,7 @@ namespace NarratechDtCollect
             services.AddScoped<IRepo<User>, UserRepo>();
             services.AddScoped<IUserService, UserService>();
 
-            services.AddDbContext<DbContextDtCollect>();
+            services.AddDbContext<DbContextDtCollect>(opt => opt.UseSqlite("Data Source=DtDatabase"));
 
             services.AddTransient<IDbSeed, DbSeed>();
             
@@ -81,8 +78,6 @@ namespace NarratechDtCollect
                 app.UseHsts();
             }
 
-            app.UseAuthentication();
-            app.UseCors("AllowAnyOrigin");
             app.UseHttpsRedirection();
             app.UseMvc();
         }
