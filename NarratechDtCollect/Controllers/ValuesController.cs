@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Principal;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using static NarratechDtCollect.Startup;
 
 namespace NarraTechDtCollect.Controllers
 {
-    [Authorize]
+    [Authorize(WindowsIdentity.DefaultIssuer)]
     [Route("api/[controller]")]
     [ApiController]
     public class ValuesController : ControllerBase
@@ -20,7 +22,7 @@ namespace NarraTechDtCollect.Controllers
         }
 
         // GET api/values/5
-        [HttpGet("{id}")]
+        [HttpGet("1")]
         public ActionResult<string> Get(int id)
         {
             return "the actual worst thing";
