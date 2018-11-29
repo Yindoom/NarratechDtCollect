@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp2.1</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\DtCollect.Core.Entity\DtCollect.Core.Entity.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Helpers" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="5.3.0" />
+    </ItemGroup>
+
+</Project>
