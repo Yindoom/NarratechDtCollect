@@ -44,5 +44,11 @@ namespace DtCollect.Infrastructure.Data.Repos
             _ctx.SaveChanges();
             return del;
         }
+
+        public User GetByUsername(LoginInput login)
+        {
+            return _ctx.Users.FirstOrDefault(u =>
+                u.Username == login.Username);
+        }
     }
 }
