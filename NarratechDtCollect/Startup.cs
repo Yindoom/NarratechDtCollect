@@ -40,7 +40,7 @@ namespace NarratechDtCollect
             services.AddScoped<IRepo<User>, UserRepo>();
             services.AddScoped<IUserService, UserService>();
 
-            services.AddDbContext<DbContextDtCollect>();
+            services.AddDbContext<DbContextDtCollect>(opt => opt.UseSqlite("Data Source=DtDatabase"));
 
             services.AddTransient<IDbSeed, DbSeed>();
             
@@ -69,6 +69,7 @@ namespace NarratechDtCollect
                 app.UseHsts();
             }
 
+            app.UseCors("AllowAnyOrigin");
             app.UseHttpsRedirection();
             app.UseMvc();
         }
