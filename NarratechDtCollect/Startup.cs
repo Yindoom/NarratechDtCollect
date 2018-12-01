@@ -43,6 +43,8 @@ namespace NarratechDtCollect
 
             services.AddScoped<IHistorian, MockIp21>();
 
+            services.AddScoped<ISampleService, SampleService>();
+
             services.AddDbContext<DbContextDtCollect>(opt => opt.UseSqlite("Data Source=DtDatabase"));
 
             services.AddTransient<IDbSeed, DbSeed>();
