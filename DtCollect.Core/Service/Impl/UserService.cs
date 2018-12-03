@@ -28,6 +28,11 @@ namespace DtCollect.Core.Service.Impl
             return _repo.ReadAll().ToList();
         }
 
+        public User GetUser(LoginInput login)
+        {
+            return _repo.GetByUsername(login);
+        }
+
         public User GetById(int id)
         {
             return _repo.Get(id);
