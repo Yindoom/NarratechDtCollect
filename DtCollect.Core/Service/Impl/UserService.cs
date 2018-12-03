@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -13,6 +14,7 @@ namespace DtCollect.Core.Service.Impl
         public UserService(IRepo<User> repo)
         {
             _repo = repo;
+
         }
         public User Create(User created)
         {
@@ -27,6 +29,7 @@ namespace DtCollect.Core.Service.Impl
         {
             return _repo.ReadAll().ToList();
         }
+
 
         public User GetUser(LoginInput login)
         {

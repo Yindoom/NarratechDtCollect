@@ -7,6 +7,7 @@ using System.Runtime.CompilerServices;
 using System.Threading;
 using DtCollect.Core.Domain;
 using DtCollect.Core.Entity;
+using DtCollect.Core.Service;
 using DtCollect.Core.Service.Impl;
 using Moq;
 using Xunit;
@@ -46,6 +47,7 @@ namespace TestUserService
         public void TestGetAll()
         {
             var repo = new Mock<IRepo<User>>();
+            var auth = new Mock<IAuthenticationHelper>();
 
             var Users = GetUsers();
             repo.Setup(me => me.ReadAll()).Returns(Users);
@@ -62,6 +64,8 @@ namespace TestUserService
         public void TestGetById(int id, string name)
         {
             var repo = new Mock<IRepo<User>>();
+            
+            var auth = new Mock<IAuthenticationHelper>();
 
             repo.Setup(me => me.Get(id)).Returns(GetUsers().FirstOrDefault(u => u.Id == id));
             var service = new UserService(repo.Object);
