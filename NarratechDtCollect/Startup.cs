@@ -20,6 +20,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using MockHistorian;
 
 namespace NarratechDtCollect
 {
@@ -42,6 +43,10 @@ namespace NarratechDtCollect
 
             services.AddScoped<IRepo<User>, UserRepo>();
             services.AddScoped<IUserService, UserService>();
+
+            services.AddScoped<IHistorian, MockIp21>();
+
+            services.AddScoped<ISampleService, SampleService>();
 
             services.AddDbContext<DbContextDtCollect>(opt => opt.UseSqlite("Data Source=DtDatabase"));
 
