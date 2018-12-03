@@ -16,7 +16,6 @@ namespace DtCollect.Core.Service.Impl
         }
         public List<HistorianSample> Get(Request request)
         {
-            TimeSpan interval = TimeSpan.Parse(request.Interval.TotalSeconds.ToString());
             SampleType.TryParse(request.SampleType, out SampleType typeSample);
             
             return _historian.GetSamples(request.From, request.To, request.Interval , typeSample).ToList();
