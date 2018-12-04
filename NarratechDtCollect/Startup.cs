@@ -21,6 +21,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using MockHistorian;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace NarratechDtCollect
 {
@@ -37,6 +39,14 @@ namespace NarratechDtCollect
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            
+            services.AddMvc().AddJsonOptions(options =>
+            {
+                options.SerializerSettings.ContractResolver = 
+                    new CamelCasePropertyNamesContractResolver();
+                options.SerializerSettings.ReferenceLoopHandling =
+                    ReferenceLoopHandling.Ignore;
+            });
             
             services.AddCors(options => options.AddPolicy("AllowAnyOrigin", builder => 
                 builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()));
@@ -86,6 +96,8 @@ namespace NarratechDtCollect
                 app.UseHsts();
             }
 
+            app.UseCors("AllowAnyOrigin");
+            app.UseAuthentication();
             app.UseHttpsRedirection();
             app.UseMvc();
         }
