@@ -36,6 +36,10 @@ namespace NarratechDtCollect
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            Byte[] secretBytes = new Byte[40];
+            Random rand = new Random();
+            rand.NextBytes(secretBytes);
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             
             services.AddCors(options => options.AddPolicy("AllowAnyOrigin", builder => 
@@ -51,6 +55,7 @@ namespace NarratechDtCollect
             services.AddDbContext<DbContextDtCollect>(opt => opt.UseSqlite("Data Source=DtDatabase"));
 
             services.AddTransient<IDbSeed, DbSeed>();
+            services.AddSingleton<IAuthenticationHelper>(new AuthenticationHelper(secretBytes));
             
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
                 options.TokenValidationParameters = new TokenValidationParameters
@@ -58,7 +63,7 @@ namespace NarratechDtCollect
                     ValidateAudience = false,
                     ValidateIssuer = false,
                     ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = JwtSecurityKey.Key,
+                    IssuerSigningKey = new SymmetricSecurityKey(secretBytes),
                     ValidateLifetime = true,
                     ClockSkew = TimeSpan.FromMinutes(5)
                 });
@@ -86,6 +91,7 @@ namespace NarratechDtCollect
                 app.UseHsts();
             }
 
+            app.UseCors("AllowAnyOrigin");
             app.UseHttpsRedirection();
             app.UseMvc();
         }
