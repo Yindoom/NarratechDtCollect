@@ -9,7 +9,7 @@ namespace DtCollect.Core.Service
     {
         Log Create(Log Created);
         List<Log> ReadAll();
-        List<Log> ReadByUser(Log user);
-        List<Log> ReadbyType();
+        Log ReadByUser(Log log);
+        Log ReadbySuccess(bool success);
     }
 }

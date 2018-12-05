@@ -25,14 +25,14 @@ namespace DtCollect.Core.Service.Impl
             return _repo.ReadAll().ToList();
         }
 
-        public List<Log> ReadByUser(Log user)
+        public Log ReadByUser(Log log)
         {
-            throw new NotImplementedException();
+            return _repo.ReadAll().FirstOrDefault(l => l.User == log.User);
         }
 
-        public List<Log> ReadbyType()
-        {
-            throw new NotImplementedException();
+        public Log ReadbySuccess(bool success)
+        {   
+            return _repo.ReadAll().FirstOrDefault(l => l.Success == success );
         }
     }
 }

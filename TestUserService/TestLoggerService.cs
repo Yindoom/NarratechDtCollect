@@ -46,7 +46,7 @@ namespace TestUserService
                 {
                     Id = 1,
                     User = new User(),
-                    Type = "Error",
+                    Success = false,
                     Action = "401",
                     Date = DateTime.Now
                 },
@@ -54,7 +54,7 @@ namespace TestUserService
                 {
                     Id = 2,
                     User = new User(),
-                    Type = "Extract",
+                    Success = true,
                     Action = "Extract information form data",
                     Date = DateTime.Now
                 },
@@ -62,7 +62,7 @@ namespace TestUserService
                 {
                     Id = 3,
                     User = new User(),
-                    Type = "Fail",
+                    Success = false,
                     Action = "Failed to extract data",
                     Date = DateTime.Now 
                 }
@@ -107,6 +107,21 @@ namespace TestUserService
             service.ReadByUser(new Log());
             repo.Verify(l => l.ReadAll(), Times.Once);
             
+        }
+
+        [Fact]
+        
+        public void TestReadByType()
+        {
+            var repo = new Mock<IRepo<Log>>();
+            
+            var service = new LoggerService(repo.Object);
+
+            bool error = false;
+            
+            service.ReadbySuccess(error);
+            
+            repo.Verify(l => l.ReadAll(), Times.Once );
         }
     }
 }

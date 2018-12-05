@@ -6,7 +6,7 @@ namespace DtCollect.Core.Entity
     {
         public int Id { get; set; }
         public User User { get; set; }
-        public string Type { get; set; }
+        public bool Success { get; set; }
         public string Action { get; set; }
         public DateTime Date { get; set; }
     }
