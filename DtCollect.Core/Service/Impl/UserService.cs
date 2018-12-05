@@ -33,7 +33,7 @@ namespace DtCollect.Core.Service.Impl
 
         public User GetUser(LoginInput login)
         {
-            return _repo.GetByUsername(login);
+            return _repo.ReadAll().FirstOrDefault(u => u.Username == login.Username);
         }
 
         public User GetById(int id)

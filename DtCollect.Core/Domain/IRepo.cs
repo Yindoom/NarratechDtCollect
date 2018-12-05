@@ -11,7 +11,5 @@ namespace DtCollect.Core.Domain
         T Create(T created);
         T Update(T update);
         T Delete(T delete);
-        User GetByUsername(LoginInput login);
-
     }
 }
