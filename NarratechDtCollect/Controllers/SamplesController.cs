@@ -19,8 +19,8 @@ namespace NarraTechDtCollect.Controllers
         }
 
         // GET
-        [HttpGet]
-        public ActionResult<IEnumerable<HistorianSample>> Get([FromBody] Request request)
+        [HttpPost]
+        public ActionResult<IEnumerable<HistorianSample>> GetData([FromBody] Request request)
         {
             return Ok(_service.Get(request));
         }
