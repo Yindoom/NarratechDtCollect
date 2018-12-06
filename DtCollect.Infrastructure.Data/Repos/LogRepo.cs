@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using DtCollect.Core.Domain;
 using DtCollect.Core.Entity;
+using Microsoft.EntityFrameworkCore;
 
 namespace DtCollect.Infrastructure.Data.Repos
 {
@@ -17,7 +18,7 @@ namespace DtCollect.Infrastructure.Data.Repos
         
         public IEnumerable<Log> ReadAll()
         {
-            return _ctx.Logs;
+            return _ctx.Logs.Include(l => l.User);
         }
 
         public Log Get(int id)

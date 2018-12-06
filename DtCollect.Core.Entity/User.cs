@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace DtCollect.Core.Entity
 {
     public class User
@@ -11,5 +13,7 @@ namespace DtCollect.Core.Entity
         public byte[] PasswordSalt { get; set; }
         
         public bool IsAdmin { get; set; }
+        
+        public List<Log> Logs { get; set; }
     }
 }
