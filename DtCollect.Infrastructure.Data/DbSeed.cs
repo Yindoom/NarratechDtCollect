@@ -10,7 +10,6 @@ namespace DtCollect.Infrastructure.Data
     {
         public void SeedDb(DbContextDtCollect ctx)
         {
-            ctx.Database.EnsureDeleted();
             ctx.Database.EnsureCreated();
             if (!ctx.Users.Any() && !ctx.Logs.Any())
             {
