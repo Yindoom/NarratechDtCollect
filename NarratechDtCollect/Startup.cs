@@ -58,6 +58,9 @@ namespace NarratechDtCollect
             services.AddScoped<IRepo<User>, UserRepo>();
             services.AddScoped<IUserService, UserService>();
 
+            services.AddScoped<IRepo<Log>, LogRepo>();
+            services.AddScoped<ILoggerService, LoggerService>();
+
             services.AddScoped<IHistorian, MockIp21>();
 
             services.AddScoped<ISampleService, SampleService>();
