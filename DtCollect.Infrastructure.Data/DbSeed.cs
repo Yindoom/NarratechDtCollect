@@ -47,7 +47,7 @@ namespace DtCollect.Infrastructure.Data
                 ctx.Logs.Add(new Log()
                 {
                     Id = 2,
-                    User = user,
+                    User = user2,
                     Success = true,
                     Action = "Data Request",
                     Date = DateTime.Now

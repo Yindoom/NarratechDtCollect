@@ -38,5 +38,12 @@ namespace NarraTechDtCollect.Controllers
         {
             return Ok(_loggerService.ReadByUser(user));
         }
+        
+        //GET api/values/{success}
+        [HttpGet("{success}")]
+        public ActionResult<List<Log>> Get(bool success)
+        {
+            return Ok(_loggerService.ReadbySuccess(success));
+        }
     }
 }

@@ -25,14 +25,14 @@ namespace DtCollect.Core.Service.Impl
             return _repo.ReadAll().ToList();
         }
 
-        public Log ReadByUser(string user)
+        public List<Log> ReadByUser(string user)
         {
-            return _repo.ReadAll().FirstOrDefault(l => l.User.Username == user);
+            return _repo.ReadAll().Where(l => l.User.Username == user).ToList();
         }
 
-        public Log ReadbySuccess(bool success)
+        public List<Log> ReadbySuccess(bool success)
         {   
-            return _repo.ReadAll().FirstOrDefault(l => l.Success == success );
+            return _repo.ReadAll().Where(l => l.Success == success).ToList();
         }
     }
 }
