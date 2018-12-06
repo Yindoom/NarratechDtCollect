@@ -25,9 +25,9 @@ namespace DtCollect.Core.Service.Impl
             return _repo.ReadAll().ToList();
         }
 
-        public Log ReadByUser(Log log)
+        public Log ReadByUser(string user)
         {
-            return _repo.ReadAll().FirstOrDefault(l => l.User == log.User);
+            return _repo.ReadAll().FirstOrDefault(l => l.User.Username == user);
         }
 
         public Log ReadbySuccess(bool success)

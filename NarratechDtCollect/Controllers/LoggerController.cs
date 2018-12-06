@@ -10,10 +10,12 @@ namespace NarraTechDtCollect.Controllers
     public class LoggerController : ControllerBase
     {
         private readonly ILoggerService _loggerService;
+        private IUserService _userService;
 
-        public LoggerController(ILoggerService loggerService)
+        public LoggerController(ILoggerService loggerService, IUserService userService)
         {
             _loggerService = loggerService;
+            _userService = userService;
         }
         
         // GET api/values
@@ -30,11 +32,11 @@ namespace NarraTechDtCollect.Controllers
             return _loggerService.Create(log);
         }
         
-       /*//GET api/values/{users}
-        [HttpGet("{Users}")]
-        public ActionResult<List<Log>> Get(Log user)
+       //GET api/values/{users}
+        [HttpGet("{user}")]
+        public ActionResult<List<Log>> Get(string user)
         {
             return Ok(_loggerService.ReadByUser(user));
-        }*/
+        }
     }
 }

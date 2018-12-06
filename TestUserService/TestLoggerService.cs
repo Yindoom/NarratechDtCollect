@@ -100,11 +100,8 @@ namespace TestUserService
         {
             var repo = new Mock<IRepo<Log>>();
             
-            var Log = GetLogs();
-            var User = GetUsers();
-            
             var service = new LoggerService(repo.Object);
-            service.ReadByUser(new Log());
+            service.ReadByUser(ToString());
             repo.Verify(l => l.ReadAll(), Times.Once);
             
         }
