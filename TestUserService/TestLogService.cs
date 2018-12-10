@@ -9,7 +9,7 @@ using Xunit;
 
 namespace TestUserService
 {
-    public class TestLoggerService
+    public class TestLogService
     {
         public List<User> GetUsers()
         {
@@ -78,7 +78,7 @@ namespace TestUserService
             var Logs = GetLogs();
             repo.Setup(me => me.ReadAll()).Returns(Logs);
 
-            var service = new LoggerService(repo.Object);
+            var service = new LogService(repo.Object);
 
             Assert.True(service.ReadAll().Count == 3);
         }
@@ -89,7 +89,7 @@ namespace TestUserService
             var Log = GetLogs().FirstOrDefault();
             var repo = new Mock<IRepo<Log>>();
 
-            var service = new LoggerService(repo.Object);
+            var service = new LogService(repo.Object);
             
             service.Create(Log);
             repo.Verify(x => x.Create(Log), Times.Once);
@@ -100,7 +100,7 @@ namespace TestUserService
         {
             var repo = new Mock<IRepo<Log>>();
             
-            var service = new LoggerService(repo.Object);
+            var service = new LogService(repo.Object);
             service.ReadByUser(ToString());
             repo.Verify(l => l.ReadAll(), Times.Once);
             
@@ -112,7 +112,7 @@ namespace TestUserService
         {
             var repo = new Mock<IRepo<Log>>();
             
-            var service = new LoggerService(repo.Object);
+            var service = new LogService(repo.Object);
 
             bool error = false;
             

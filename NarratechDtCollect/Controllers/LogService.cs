@@ -7,14 +7,14 @@ namespace NarraTechDtCollect.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class LoggerController : ControllerBase
+    public class LogController : ControllerBase
     {
-        private readonly ILoggerService _loggerService;
+        private readonly ILogService _logService;
         private IUserService _userService;
 
-        public LoggerController(ILoggerService loggerService, IUserService userService)
+        public LogController(ILogService logService, IUserService userService)
         {
-            _loggerService = loggerService;
+            _logService = logService;
             _userService = userService;
         }
         
@@ -22,28 +22,28 @@ namespace NarraTechDtCollect.Controllers
         [HttpGet]
         public ActionResult<List<Log>> Get()
         {
-            return _loggerService.ReadAll();
+            return _logService.ReadAll();
         }
         
         // POST api/values
         [HttpPost]
         public Log Post([FromBody] Log log)
         {
-            return _loggerService.Create(log);
+            return _logService.Create(log);
         }
         
        //GET api/values/{users}
         [HttpGet("{user}")]
         public ActionResult<List<Log>> Get(string user)
         {
-            return Ok(_loggerService.ReadByUser(user));
+            return Ok(_logService.ReadByUser(user));
         }
         
         //GET api/values/{success}
         [HttpGet("{success}")]
         public ActionResult<List<Log>> Get(bool success)
         {
-            return Ok(_loggerService.ReadbySuccess(success));
+            return Ok(_logService.ReadbySuccess(success));
         }
     }
 }
