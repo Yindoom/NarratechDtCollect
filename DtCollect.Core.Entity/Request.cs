@@ -9,5 +9,6 @@ namespace DtCollect.Core.Entity
         public DateTimeOffset To{ get; set; }
         public TimeSpan Interval { get; set; }
         public string SampleType { get; set; }
+        public User User { get; set; }
     }
 }
