@@ -9,8 +9,8 @@ namespace DtCollect.Core.Service
         Request Create(Request Created);
         List<Request> ReadAll();
         List<Request> ReadByUser(String user);
-        Request ReadById(int id); 
-
+        Request GetById(int id);
+        Request Delete(int id);
 
     }
 }

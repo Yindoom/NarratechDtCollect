@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace DtCollect.Core.Entity
 {
@@ -9,6 +10,9 @@ namespace DtCollect.Core.Entity
         public DateTimeOffset To{ get; set; }
         public TimeSpan Interval { get; set; }
         public string SampleType { get; set; }
+        public int Id { get; set; }
         public User User { get; set; }
+        public List<Log> log { get; set; }
+        
     }
 }

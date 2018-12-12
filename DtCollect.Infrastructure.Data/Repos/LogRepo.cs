@@ -18,7 +18,7 @@ namespace DtCollect.Infrastructure.Data.Repos
         
         public IEnumerable<Log> ReadAll()
         {
-            return _ctx.Logs.Include(l => l.User);
+            return _ctx.Logs.Include(u => u.request.User);
         }
 
         public Log Get(int id)

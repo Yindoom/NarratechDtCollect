@@ -11,8 +11,12 @@ namespace DtCollect.Infrastructure.Data
         protected override void OnModelCreating(ModelBuilder model)
         {
             model.Entity<Log>()
-                .HasOne(l => l.User)
-                .WithMany(u => u.Logs);
+                .HasOne(l => l.request)
+                .WithMany(u => u.log);
+
+            model.Entity<Request>()
+                .HasOne(u => u.User)
+                .WithMany(r => r.requests);
         }
 
         public DbSet<User> Users { get; set; }

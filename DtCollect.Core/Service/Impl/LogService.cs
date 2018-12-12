@@ -26,7 +26,7 @@ namespace DtCollect.Core.Service.Impl
 
         public List<Log> ReadByUser(string user)
         {
-            return _repo.ReadAll().Where(l => l.User.Username == user).ToList();
+            return _repo.ReadAll().Where(l => l.request.User.Username == user).ToList();
         }
 
         public List<Log> ReadbySuccess(bool success)

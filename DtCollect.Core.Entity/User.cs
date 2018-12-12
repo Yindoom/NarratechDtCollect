@@ -14,6 +14,6 @@ namespace DtCollect.Core.Entity
         
         public bool IsAdmin { get; set; }
         
-        public List<Log> Logs { get; set; }
+        public List<Request> requests { get; set; }
     }
 }

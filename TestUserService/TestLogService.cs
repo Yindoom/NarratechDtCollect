@@ -45,7 +45,7 @@ namespace TestUserService
                 new Log()
                 {
                     Id = 1,
-                    User = new User(),
+                    request = new Request(),
                     Success = false,
                     Action = "401",
                     Date = DateTime.Now
@@ -53,7 +53,7 @@ namespace TestUserService
                 new Log()
                 {
                     Id = 2,
-                    User = new User(),
+                    request = new Request(),
                     Success = true,
                     Action = "Extract information form data",
                     Date = DateTime.Now
@@ -61,7 +61,7 @@ namespace TestUserService
                 new Log()
                 {
                     Id = 3,
-                    User = new User(),
+                    request = new Request(),
                     Success = false,
                     Action = "Failed to extract data",
                     Date = DateTime.Now 
@@ -106,8 +106,7 @@ namespace TestUserService
             
         }
 
-        [Fact]
-        
+        [Fact]  
         public void TestReadByType()
         {
             var repo = new Mock<IRepo<Log>>();

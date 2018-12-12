@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using DtCollect.Core.Domain;
 using DtCollect.Core.Entity;
 
@@ -16,17 +17,19 @@ namespace DtCollect.Infrastructure.Data.Repos
         
         public IEnumerable<Request> ReadAll()
         {
-            throw new System.NotImplementedException();
+           return _ctx.Requests;
         }
 
         public Request Get(int id)
         {
-            throw new System.NotImplementedException();
+            return _ctx.Requests.FirstOrDefault(r => r.Id == id);
         }
 
         public Request Create(Request created)
         {
-            throw new System.NotImplementedException();
+            var add = _ctx.Requests.Add(created).Entity;
+            _ctx.SaveChanges();
+            return add;
         }
 
         public Request Update(Request update)
@@ -36,7 +39,9 @@ namespace DtCollect.Infrastructure.Data.Repos
 
         public Request Delete(Request delete)
         {
-            throw new System.NotImplementedException();
+            var del = _ctx.Remove(delete).Entity;
+            _ctx.SaveChanges();
+            return del;
         }
     }
 }
