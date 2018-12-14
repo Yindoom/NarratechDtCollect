@@ -47,7 +47,7 @@ namespace TestUserService
                     Id = 1,
                     request = new Request(),
                     Success = false,
-                    Action = "401",
+                    Message = "401",
                     Date = DateTime.Now
                 },
                 new Log()
@@ -55,7 +55,7 @@ namespace TestUserService
                     Id = 2,
                     request = new Request(),
                     Success = true,
-                    Action = "Extract information form data",
+                    Message = "Extract information form data",
                     Date = DateTime.Now
                 },
                 new Log()
@@ -63,7 +63,7 @@ namespace TestUserService
                     Id = 3,
                     request = new Request(),
                     Success = false,
-                    Action = "Failed to extract data",
+                    Message = "Failed to extract data",
                     Date = DateTime.Now 
                 }
             };

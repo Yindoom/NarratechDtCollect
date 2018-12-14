@@ -12,7 +12,7 @@ namespace DtCollect.Core.Entity
         public string SampleType { get; set; }
         public int Id { get; set; }
         public User User { get; set; }
-        public List<Log> log { get; set; }
+        public List<Log> Logs { get; set; }
         
     }
 }

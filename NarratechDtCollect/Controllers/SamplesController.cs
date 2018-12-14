@@ -10,19 +10,23 @@ namespace NarraTechDtCollect.Controllers
     [ApiController]
     public class SamplesController : ControllerBase
     {
-        private readonly ISampleService _service;
+        
+        private ISampleService _sampleService;
+        private IRequestService _requestService;
 
-        public SamplesController(ISampleService service)
+        public SamplesController(ISampleService sampleService, IRequestService requestService)
         {
-            _service = service;
-            
+            _sampleService = sampleService;
+            _requestService = requestService;
+
         }
 
-        // GET
-        [HttpPost]
-        public ActionResult<IEnumerable<HistorianSample>> GetData([FromBody] Request request)
+        [HttpGet("{id}")]
+        public ActionResult<IEnumerable<HistorianSample>> GetData(int id)
         {
-            return Ok(_service.Get(request));
+            var req = _requestService.GetById(id);
+
+            return Ok(_sampleService.Get(req));
         }
     }
 }

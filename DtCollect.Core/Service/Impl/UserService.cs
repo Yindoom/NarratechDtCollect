@@ -31,9 +31,9 @@ namespace DtCollect.Core.Service.Impl
         }
 
 
-        public User GetUser(LoginInput login)
+        public User GetUser(string login)
         {
-            return _repo.ReadAll().FirstOrDefault(u => u.Username == login.Username);
+            return _repo.ReadAll().FirstOrDefault(u => u.Username == login);
         }
 
         public User GetById(int id)

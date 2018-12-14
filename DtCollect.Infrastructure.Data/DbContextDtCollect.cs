@@ -12,7 +12,7 @@ namespace DtCollect.Infrastructure.Data
         {
             model.Entity<Log>()
                 .HasOne(l => l.request)
-                .WithMany(u => u.log);
+                .WithMany(r => r.Logs);
 
             model.Entity<Request>()
                 .HasOne(u => u.User)

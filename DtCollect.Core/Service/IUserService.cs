@@ -9,7 +9,7 @@ namespace DtCollect.Core.Service
         
         List<User> ReadAll();
         
-        User GetUser(LoginInput login);
+        User GetUser(string login);
         
         User GetById(int id);
         

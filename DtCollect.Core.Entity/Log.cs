@@ -10,7 +10,7 @@ namespace DtCollect.Core.Entity
         public int Id { get; set; }
         public Request request { get; set; }
         public bool Success { get; set; }
-        public string Action { get; set; }
+        public string Message { get; set; }
         public DateTime Date { get; set; }
     }
 }

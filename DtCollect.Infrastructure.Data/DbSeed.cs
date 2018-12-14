@@ -42,8 +42,8 @@ namespace DtCollect.Infrastructure.Data
                     To = new DateTimeOffset(),
                     User = user,
                     Id = 1,
-                    log = new List<Log>(),
-                    Interval = TimeSpan.MinValue,
+                    Logs = new List<Log>(),
+                    Interval = TimeSpan.Parse("00:00:30"),
                     TagName = "ewrwer",
                     SampleType = "Point"
 
@@ -55,8 +55,8 @@ namespace DtCollect.Infrastructure.Data
                     To = new DateTimeOffset(),
                     User = user2,
                     Id = 2,
-                    log = new List<Log>(),
-                    Interval = TimeSpan.MinValue,
+                    Logs = new List<Log>(),
+                    Interval = TimeSpan.Parse("00:00:30"),
                     TagName = "ewrwer2",
                     SampleType = "Average"
 
@@ -67,7 +67,7 @@ namespace DtCollect.Infrastructure.Data
                     Id = 1,
                     request = request1,
                     Success = true,
-                    Action = "Data Request",
+                    Message = "Data Request",
                     Date = DateTime.Now
                 });
                 
@@ -76,7 +76,7 @@ namespace DtCollect.Infrastructure.Data
                     Id = 2,
                     request = request1,
                     Success = true,
-                    Action = "Data Request",
+                    Message = "Data Request",
                     Date = DateTime.Now
                 });
                 
@@ -85,7 +85,7 @@ namespace DtCollect.Infrastructure.Data
                     Id = 3,
                     request = request2,
                     Success = false,
-                    Action = "Data Request",
+                    Message = "Data Request",
                     Date = DateTime.Now
                 });
                 
@@ -94,7 +94,7 @@ namespace DtCollect.Infrastructure.Data
                     Id = 4,
                     request = request2,
                     Success = false,
-                    Action = "Data Request",
+                    Message = "Data Request",
                     Date = DateTime.Now
                 });
             }

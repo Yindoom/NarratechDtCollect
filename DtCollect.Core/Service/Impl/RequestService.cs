@@ -23,38 +23,35 @@ namespace DtCollect.Core.Service.Impl
             if (Created.From > Created.To)
             {
                 var log1 = new Log()            
-                {                              
-                    request = Created,         
-                    Action = "Data Request",   
+                {                                    
+                    Message = "From cannot be later than To",   
                     Date = DateTime.Now,       
                     Success = false             
                 };                             
-                _log.Create(log1);              
+                Created.Logs.Add(log1);              
                 throw new InvalidDataException("From must be earlier than To");
             }
 
             if ((Created.From == DateTimeOffset.MinValue) || Created.To == DateTimeOffset.MinValue)
             {
                 var log2 = new Log()            
-                {                              
-                    request = Created,         
-                    Action = "Data Request",   
+                {                                       
+                    Message = "Date input missing",   
                     Date = DateTime.Now,       
                     Success = false           
                 };                             
-                _log.Create(log2);              
+                Created.Logs.Add(log2);
                 throw new InvalidDataException("No date entered");
                 
             }
 
             var log = new Log()
             {
-                request = Created,
-                Action = "Data Request",
+                Message = "Date request success",
                 Date = DateTime.Now,
                 Success = true
             };
-            _log.Create(log);
+            Created.Logs.Add(log);
             
             return _repo.Create(Created);
         }
@@ -81,7 +78,7 @@ namespace DtCollect.Core.Service.Impl
             var log = new Log()            
             {    
                 request = request,
-                Action = "Deletion",   
+                Message = "Deletion",   
                 Date = DateTime.Now,       
                 Success = true             
             };                             
