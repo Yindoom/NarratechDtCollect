@@ -20,7 +20,7 @@ namespace NarraTechDtCollect.Controllers
 
         }
 
-        // Post
+        // Post 
         [HttpPost]
         public ActionResult<Request> PostRequest([FromBody] Request request, [FromQuery] string username)
         {
@@ -45,6 +45,7 @@ namespace NarraTechDtCollect.Controllers
         public ActionResult<Request> GetReqById(int id)
         {
             return _requestService.GetById(id);
+            
         }
             
     }
