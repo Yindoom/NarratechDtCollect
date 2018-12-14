@@ -23,7 +23,7 @@ using Microsoft.IdentityModel.Tokens;
 using MockHistorian;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
-
+//comment
 namespace NarratechDtCollect
 {
     public class Startup
