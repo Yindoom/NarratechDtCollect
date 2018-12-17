@@ -10,8 +10,11 @@ namespace DtCollect.Infrastructure.Data
     {
         public void SeedDb(DbContextDtCollect ctx)
         {
+            
+            //ENsures the Database is created, and checks all tables for entries. If empty, fills out with data
+            ctx.Database.EnsureDeleted();
             ctx.Database.EnsureCreated();
-            if (!ctx.Users.Any() && !ctx.Logs.Any())
+            if (!ctx.Users.Any() && !ctx.Logs.Any() && !ctx.Requests.Any())
             {
                 string password = "1234";
                 byte[] passwordHashJoe, passwordSaltJoe, passwordHashAnn, passwordSaltAnn;
@@ -35,44 +38,72 @@ namespace DtCollect.Infrastructure.Data
                     IsAdmin = true
                 }).Entity;
 
+                var request1 = ctx.Requests.Add(new Request()
+                {
+                    From = new DateTimeOffset(),
+                    To = new DateTimeOffset(),
+                    User = user,
+                    Id = 1,
+                    Logs = new List<Log>(),
+                    Interval = TimeSpan.Parse("00:00:30"),
+                    TagName = "ewrwer",
+                    SampleType = "Point"
+
+                }).Entity;
+                
+                var request2 = ctx.Requests.Add(new Request()
+                {
+                    From = new DateTimeOffset(),
+                    To = new DateTimeOffset(),
+                    User = user2,
+                    Id = 2,
+                    Logs = new List<Log>(),
+                    Interval = TimeSpan.Parse("00:00:30"),
+                    TagName = "ewrwer2",
+                    SampleType = "Average"
+
+                }).Entity;
+
                 ctx.Logs.Add(new Log()
                 {
                     Id = 1,
-                    User = user,
+                    request = request1,
                     Success = true,
-                    Action = "Data Request",
+                    Message = "Data Request",
                     Date = DateTime.Now
                 });
                 
                 ctx.Logs.Add(new Log()
                 {
                     Id = 2,
-                    User = user2,
+                    request = request1,
                     Success = true,
-                    Action = "Data Request",
+                    Message = "Data Request",
                     Date = DateTime.Now
                 });
                 
                 ctx.Logs.Add(new Log()
                 {
                     Id = 3,
-                    User = user,
+                    request = request2,
                     Success = false,
-                    Action = "Data Request",
+                    Message = "Data Request",
                     Date = DateTime.Now
                 });
                 
                 ctx.Logs.Add(new Log()
                 {
                     Id = 4,
-                    User = user2,
+                    request = request2,
                     Success = false,
-                    Action = "Data Request",
+                    Message = "Data Request",
                     Date = DateTime.Now
                 });
             }
             ctx.SaveChanges();
         }
+        
+        //Stand in passwordhash method 
         private static void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
         {
             using (var hmac = new System.Security.Cryptography.HMACSHA512())

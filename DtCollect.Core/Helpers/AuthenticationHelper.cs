@@ -12,13 +12,13 @@ namespace DtCollect.Core.Service.Impl
     public class AuthenticationHelper: IAuthenticationHelper
     {
         private byte[] secretBytes;
-
+        // SecretBytes get an array of bytes called secret that we generate in the startup. 
         public AuthenticationHelper(byte[] secret)
         {
             secretBytes = secret;
         }
 
-
+        // It creates a password salt and hashes the password.
         public void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
         {
             using (var hmac = new System.Security.Cryptography.HMACSHA512())
@@ -27,7 +27,8 @@ namespace DtCollect.Core.Service.Impl
                 passwordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
             }
         }
-
+        // To verify the password it converts it to a hash value using the salt. It then checks both arrays
+        // to see if they match, if they do then it returns true if not then it returns false. 
         public bool VerifyPasswordHash(string password, byte[] storedHash, byte[] storedSalt)
         {
             using (var hmac = new System.Security.Cryptography.HMACSHA512(storedSalt))
@@ -45,7 +46,8 @@ namespace DtCollect.Core.Service.Impl
                 return true;
             }
         }
-
+        //Generate a token that is valid for 10 minutes. The token is used between the server and the client,
+        // to check wether the user is logged in or not. 
         public string GenerateToken(User user)
         {
             var claims = new List<Claim>

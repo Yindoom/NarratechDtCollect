@@ -18,7 +18,7 @@ namespace DtCollect.Infrastructure.Data.Repos
         
         public IEnumerable<Log> ReadAll()
         {
-            return _ctx.Logs.Include(l => l.User);
+            return _ctx.Logs.Include(u => u.request.User);
         }
 
         public Log Get(int id)
@@ -33,6 +33,7 @@ namespace DtCollect.Infrastructure.Data.Repos
             return add;
         }
 
+        //Not used due to time constraints. Have to be here for generic interface reasons
         public Log Update(Log update)
         {
             throw new System.NotImplementedException();

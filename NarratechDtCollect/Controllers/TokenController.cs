@@ -26,11 +26,13 @@ namespace NarraTechDtCollect.Controllers
         }
 
 
+        //Returns token to be used for authorisation elsewhere
+        
         // GET api/values/5
         [HttpPost]
         public ActionResult Login([FromBody] LoginInput login)
         {   
-           var user = _userService.GetUser(login);
+           var user = _userService.GetUser(login.Username);
             if (user == null)
             {
                 return Unauthorized();

@@ -12,6 +12,10 @@ namespace NarraTechDtCollect.Controllers
     {
         private readonly IUserService _service;
 
+        
+        //Generic CRUD
+        
+        
         public UsersController(IUserService service)
         {
             _service = service;

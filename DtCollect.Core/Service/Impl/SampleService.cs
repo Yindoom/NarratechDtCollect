@@ -14,11 +14,12 @@ namespace DtCollect.Core.Service.Impl
         {
             _historian = historian;
         }
+        // convert the request sampletype string to a samepletype enum, which we use to generate the data for the request. 
         public List<HistorianSample> Get(Request request)
         {
             SampleType.TryParse(request.SampleType, out SampleType typeSample);
-            
-            return _historian.GetSamples(request.From, request.To, request.Interval , typeSample).ToList();
+
+            return _historian.GetSamples(request.From, request.To, request.Interval, typeSample).ToList();
         }
     }
 }

@@ -19,6 +19,8 @@ namespace DtCollect.Infrastructure.Data.Repos
             return _ctx.Users;
         }
 
+
+
         public User Get(int id)
         {
             return _ctx.Users.FirstOrDefault(u => u.Id == id);

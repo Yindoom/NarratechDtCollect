@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace NarraTechDtCollect.Controllers
 {
+    
+    //IS NOT USED
     [Authorize]
     [Route("api/[controller]")]
     [ApiController]

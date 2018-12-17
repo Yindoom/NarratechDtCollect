@@ -8,15 +8,22 @@ namespace DtCollect.Infrastructure.Data
         public DbContextDtCollect(DbContextOptions<DbContextDtCollect> opt) : base(opt)
         {    }
 
+        //Fluent API to specify relations between Log, Request, and User
         protected override void OnModelCreating(ModelBuilder model)
         {
             model.Entity<Log>()
-                .HasOne(l => l.User)
-                .WithMany(u => u.Logs);
+                .HasOne(l => l.request)
+                .WithMany(r => r.Logs);
+
+            model.Entity<Request>()
+                .HasOne(u => u.User)
+                .WithMany(r => r.requests);
         }
 
         public DbSet<User> Users { get; set; }
         
         public DbSet<Log> Logs { get; set; }
+        
+        public DbSet<Request> Requests { get; set; }
     }
 }
