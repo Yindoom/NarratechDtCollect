@@ -8,6 +8,7 @@ namespace DtCollect.Infrastructure.Data
         public DbContextDtCollect(DbContextOptions<DbContextDtCollect> opt) : base(opt)
         {    }
 
+        //Fluent API to specify relations between Log, Request, and User
         protected override void OnModelCreating(ModelBuilder model)
         {
             model.Entity<Log>()

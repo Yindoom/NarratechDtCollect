@@ -23,15 +23,15 @@ namespace DtCollect.Core.Service.Impl
         
         public Request Create(Request Created)
         {
+            Created.Logs = new List<Log>();
             if (Created.From > Created.To)
             {
-                var log1 = new Log()            
-                {                                    
-                    Message = "From cannot be later than To",   
-                    Date = DateTime.Now,       
-                    Success = false             
-                };                             
-                Created.Logs.Add(log1);              
+                 Created.Logs.Add(_log.Create(new Log()
+                 {
+                     Date = DateTime.Now,
+                     Message = "From cannot be later than To",
+                     Success = false
+                 }));             
                 throw new InvalidDataException("From must be earlier than To");
             }
 

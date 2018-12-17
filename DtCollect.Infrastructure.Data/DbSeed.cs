@@ -10,6 +10,8 @@ namespace DtCollect.Infrastructure.Data
     {
         public void SeedDb(DbContextDtCollect ctx)
         {
+            
+            //ENsures the Database is created, and checks all tables for entries. If empty, fills out with data
             ctx.Database.EnsureDeleted();
             ctx.Database.EnsureCreated();
             if (!ctx.Users.Any() && !ctx.Logs.Any() && !ctx.Requests.Any())
@@ -100,6 +102,8 @@ namespace DtCollect.Infrastructure.Data
             }
             ctx.SaveChanges();
         }
+        
+        //Stand in passwordhash method 
         private static void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
         {
             using (var hmac = new System.Security.Cryptography.HMACSHA512())

@@ -10,6 +10,7 @@ namespace MockHistorian
         {
         }
 
+        //We did not write this code, but it makes a new IEnumerable of samples
         public IEnumerable<HistorianSample> GetSamples(DateTimeOffset from, DateTimeOffset to, TimeSpan interval, SampleType sampleType)
         {
             var random = new Random();

@@ -18,6 +18,8 @@ namespace NarraTechDtCollect.Controllers
             _userService = userService;
         }
         
+        //Basic CRUD 
+        
         // GET api/values
         [HttpGet]
         public ActionResult<List<Log>> Get()
@@ -39,6 +41,7 @@ namespace NarraTechDtCollect.Controllers
             return Ok(_logService.ReadByUser(user));
         }
         
+        //gets all logs based on their success, as true or false
         //GET api/values/{success}
         [HttpGet("{success}")]
         public ActionResult<List<Log>> Get(bool success)

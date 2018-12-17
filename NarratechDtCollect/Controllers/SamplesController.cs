@@ -21,6 +21,7 @@ namespace NarraTechDtCollect.Controllers
 
         }
 
+        //Returns samples based the id of a request
         [HttpGet("{id}")]
         public ActionResult<IEnumerable<HistorianSample>> GetData(int id)
         {

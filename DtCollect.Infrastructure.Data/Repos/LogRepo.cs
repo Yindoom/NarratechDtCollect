@@ -33,6 +33,7 @@ namespace DtCollect.Infrastructure.Data.Repos
             return add;
         }
 
+        //Not used due to time constraints. Have to be here for generic interface reasons
         public Log Update(Log update)
         {
             throw new System.NotImplementedException();

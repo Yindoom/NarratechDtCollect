@@ -19,21 +19,24 @@ namespace NarraTechDtCollect.Controllers
             _userService = userService;
 
         }
-
+       
+        //Saves a request, after adding a user based on the username of the user who sent the request in
         // Post 
         [HttpPost]
         public ActionResult<Request> PostRequest([FromBody] Request request, [FromQuery] string username)
         {
             var user = _userService.GetUser(username);
-            request.User = user;
+            request.User = new User() {Id = user.Id};
             
             return Ok(_requestService.Create(request));    
         }
 
+        //Reads requests by users, if a username was sent in the query
+        //Otherwise, reads all requests
         [HttpGet]
         public ActionResult<IEnumerable<Request>> GetRequests([FromQuery] string user)
         {
-            if (!string.IsNullOrEmpty(user))
+            if(!string.IsNullOrEmpty(user))
             {
                 return Ok(_requestService.ReadByUser(user));
             }
