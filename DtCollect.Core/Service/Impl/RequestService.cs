@@ -17,6 +17,9 @@ namespace DtCollect.Core.Service.Impl
             _repo = repo;
             _log = log;
         }
+        // it checks for two if conditions. if from date is earlier than to date and if date is set to the min/default value.
+        // in which case we log that the request failed because of wrong input. 
+        //It will try to create the request if there are no exceptions throwns. and this will then be logged as a successful data request. 
         
         public Request Create(Request Created)
         {
@@ -70,7 +73,7 @@ namespace DtCollect.Core.Service.Impl
         {
             return _repo.Get(id);
         }
-
+        // everytime a request is deleted, we log the deletion of the request. 
         public Request Delete(int id)
         {
             var request = _repo.Get(id);

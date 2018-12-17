@@ -14,6 +14,7 @@ namespace DtCollect.Core.Service.Impl
             _repo = repo;
 
         }
+       
         public Log Create(Log Created)
         {
             return _repo.Create(Created);
@@ -28,7 +29,7 @@ namespace DtCollect.Core.Service.Impl
         {
             return _repo.ReadAll().Where(l => l.request.User.Username == user).ToList();
         }
-
+        //Checks if a Request was successful or failed. 
         public List<Log> ReadbySuccess(bool success)
         {   
             return _repo.ReadAll().Where(l => l.Success == success).ToList();

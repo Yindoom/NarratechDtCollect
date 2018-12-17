@@ -16,6 +16,8 @@ namespace DtCollect.Core.Service.Impl
             _repo = repo;
 
         }
+        
+        // Basic CRUD with some exceptions. self explanatory.
         public User Create(User created)
         {
             if (string.IsNullOrEmpty(created.Username) || string.IsNullOrWhiteSpace(created.Username))
