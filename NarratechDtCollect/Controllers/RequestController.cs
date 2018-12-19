@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Security.AccessControl;
 using DtCollect.Core.Entity;
 using DtCollect.Core.Service;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace NarraTechDtCollect.Controllers
@@ -22,6 +23,7 @@ namespace NarraTechDtCollect.Controllers
        
         //Saves a request, after adding a user based on the username of the user who sent the request in
         // Post 
+        [Authorize]
         [HttpPost]
         public ActionResult<Request> PostRequest([FromBody] Request request, [FromQuery] string username)
         {

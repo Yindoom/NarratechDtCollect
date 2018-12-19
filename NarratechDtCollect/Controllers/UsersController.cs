@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 using DtCollect.Core.Entity;
 using DtCollect.Core.Service;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace NarraTechDtCollect.Controllers
@@ -35,18 +36,21 @@ namespace NarraTechDtCollect.Controllers
             return Ok(_service.GetById(id));
         }
 
+        [Authorize(Roles = "Administrator")]
         [HttpPost]
         public ActionResult<User> Post([FromBody] User user)
         {
             return Ok(_service.Create(user));
         }
 
+        [Authorize(Roles = "Administrator")]
         [HttpPut("{id}")]
         public ActionResult<User> Put([FromBody] User user, int id)
         {
             return Ok(_service.Update(id, user));
         }
 
+        [Authorize(Roles = "Administrator")]
         [HttpDelete("{id}")]
         public ActionResult<User> Delete(int id)
         {

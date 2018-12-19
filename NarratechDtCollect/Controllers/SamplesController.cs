@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using DtCollect.Core.Entity;
 using DtCollect.Core.Service;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MockHistorian;
 
@@ -22,6 +23,7 @@ namespace NarraTechDtCollect.Controllers
         }
 
         //Returns samples based the id of a request
+        [Authorize]
         [HttpGet("{id}")]
         public ActionResult<IEnumerable<HistorianSample>> GetData(int id)
         {
