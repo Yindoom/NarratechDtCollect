@@ -40,27 +40,27 @@ namespace DtCollect.Infrastructure.Data
 
                 var request1 = ctx.Requests.Add(new Request()
                 {
-                    From = new DateTimeOffset(),
-                    To = new DateTimeOffset(),
+                    To = DateTimeOffset.Parse("01/01/2019 00:00"),
+                    From = DateTimeOffset.Parse("31/12/2018 00:00"),
                     User = user,
                     Id = 1,
                     Logs = new List<Log>(),
                     Interval = TimeSpan.Parse("00:00:30"),
-                    TagName = "ewrwer",
+                    TagName = "Initial Test Request",
                     SampleType = "Point"
 
                 }).Entity;
                 
                 var request2 = ctx.Requests.Add(new Request()
                 {
-                    From = new DateTimeOffset(),
-                    To = new DateTimeOffset(),
+                    To = DateTimeOffset.Parse("01/01/2019 00:00"),
+                    From = DateTimeOffset.Parse("31/12/2018 00:00"),
                     User = user2,
                     Id = 2,
                     Logs = new List<Log>(),
                     Interval = TimeSpan.Parse("00:00:30"),
-                    TagName = "ewrwer2",
-                    SampleType = "Average"
+                    TagName = "Initial Test Request",
+                    SampleType = "Point"
 
                 }).Entity;
 
